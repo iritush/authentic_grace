@@ -1,0 +1,11 @@
+<h1>Journal</h1>
+
+<div class="container">
+  <div class="row">
+    <% @entries.each do |entry| %>
+      <%= entry.title %>
+      <%= entry.created_at.strftime("%B %d %Y, %l:%M%P") %>
+      <%= entry.content %>
+    <% end %>
+  </div>
+</div>

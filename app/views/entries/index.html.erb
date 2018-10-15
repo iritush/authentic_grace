@@ -3,9 +3,17 @@
 <div class="container">
   <div class="row">
     <% @entries.each do |entry| %>
-      <%= entry.title %>
-      <%= entry.created_at.strftime("%B %d %Y, %l:%M%P") %>
-      <%= entry.content %>
+    <div class="entry-title">
+      <h3><%= link_to entry.title, entry_path(entry.id) %></h3>
+    </div>
+    <div class="entry-date">
+      <p>Created on: <%= entry.created_at.strftime("%B %d %Y, %l:%M%P") %></p>
+    </div><br />
+      <p><%= entry.content %></p><br />
     <% end %>
   </div>
+</div>
+
+<div class="links">
+  <%= link_to 'Back', new_entry_path %>
 </div>

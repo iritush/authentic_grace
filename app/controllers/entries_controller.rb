@@ -1,7 +1,7 @@
 class EntriesController < ApplicationController
-  before_action :set_entry, only: [:edit, :show, :update]
+  before_action :set_entry, only: [:edit, :show, :update, :destroy]
   def index
-    @entries = Entry.all
+    @entries = Entry.all.order("created_at DESC")
   end
 
   def new
@@ -11,7 +11,7 @@ class EntriesController < ApplicationController
   def create
     @entry = Entry.new(entry_params)
     if @entry.save
-      redirect_to entries_path
+      redirect_to entries_path, notice: "Successfully created new Journal Entry"
     else
       render :new
     end
@@ -26,11 +26,16 @@ class EntriesController < ApplicationController
   end
 
   def update
-
+    if @entry.update(entry_params)
+      redirect_to @entry, notice: "Entry has been successfully updated!"
+    else
+      render :edit
+    end
   end
 
   def destroy
-
+    @entry.destroy
+    redirect_to root_path
   end
 
   private

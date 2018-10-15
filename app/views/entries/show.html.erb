@@ -1,0 +1,7 @@
+<h1><%= @entry.title %></h1>
+<h4><%= @entry.created_at.strftime("%B %d %Y, %l:%M%P") %></h4>
+<p><%= @entry.content %><p>
+
+<div class="links">
+  <p><%= link_to 'back', entries_path %> | <%= link_to 'edit', edit_entry_path %> | <%= link_to 'delete', entry_path, method: :delete, data: { confirm: "Are you sure?" } %></p>
+</div>

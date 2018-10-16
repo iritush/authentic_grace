@@ -10,14 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_15_175243) do
+ActiveRecord::Schema.define(version: 2018_10_16_010057) do
 
   create_table "entries", force: :cascade do |t|
     t.string "title"
-    t.date "data"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "poster_file_name"
+    t.string "poster_content_type"
+    t.integer "poster_file_size"
+    t.datetime "poster_updated_at"
   end
 
   create_table "users", force: :cascade do |t|

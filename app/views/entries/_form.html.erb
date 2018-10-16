@@ -1,6 +1,9 @@
 <%= form_for @entry do |f| %>
   <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %>
   <%= f.text_area :content, class: 'form-control', placeholder: 'Content' %>
-
+  <div class="field">
+    <%= f.label :poster %>
+    <%= f.file_field :poster %>
+  </div>
   <%= f.submit class: 'btn btn-primary'%>
   <% end %>

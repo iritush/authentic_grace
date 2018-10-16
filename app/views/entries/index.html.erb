@@ -1,16 +1,21 @@
-<h1>Journal</h1>
 
-<div class="container">
+<div class="container journal-page">
+  <h1 class="text-center">My Journal</h1>
   <div class="row">
     <% @entries.each do |entry| %>
-    <div class="entry-title">
-      <h3><%= link_to entry.title, entry_path(entry.id) %></h3>
+    <div class="col-sm-6 col-md-5">
+      <div class="thumbnail">
+        <%= link_to (image_tag entry.poster.url(:medium), class: 'image'), entry %>
+      </div>
+      <div class="entry-title">
+        <h3><%= link_to entry.title, entry_path(entry.id) %></h3>
+      </div>
+      <div class="entry-date">
+        <p>Created on: <%= entry.created_at.strftime("%B %d %Y, %l:%M%P") %></p>
+      </div><br />
+        <p><%= entry.content %></p><br />
+      <% end %>
     </div>
-    <div class="entry-date">
-      <p>Created on: <%= entry.created_at.strftime("%B %d %Y, %l:%M%P") %></p>
-    </div><br />
-      <p><%= entry.content %></p><br />
-    <% end %>
   </div>
 </div>
 

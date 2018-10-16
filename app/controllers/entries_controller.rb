@@ -1,7 +1,7 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:edit, :show, :update, :destroy]
   def index
-    @entries = Entry.all.order("created_at DESC")
+    @entries = current_user.entries
   end
 
   def new
@@ -9,7 +9,7 @@ class EntriesController < ApplicationController
   end
 
   def create
-    @entry = Entry.new(entry_params)
+    @entry = current_user.entries.build(entry_params)
     if @entry.save
       redirect_to entries_path, notice: "Successfully created new Journal Entry"
     else
@@ -41,7 +41,7 @@ class EntriesController < ApplicationController
   private
 
   def entry_params
-    params.require(:entry).permit(:title, :content, :poster)
+    params.require(:entry).permit(:title, :content, :poster, :user_id)
   end
 
   def set_entry

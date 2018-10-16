@@ -3,4 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :entries
+  before_save { self.email = email.downcase }
+
+  validates :username, presence: true, uniqueness: true
+  validates :email, presence: true, length: { maximum: 105 }, uniqueness: { case_sensitive: false }
+
 end

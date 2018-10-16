@@ -1,4 +1,6 @@
 <%= form_for @entry do |f| %>
+  <%= render 'shared/errors', obj: @entry %>
+
   <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %>
   <%= f.text_area :content, class: 'form-control', placeholder: 'Content' %>
   <div class="field">

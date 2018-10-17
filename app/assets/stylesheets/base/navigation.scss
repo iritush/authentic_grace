@@ -7,3 +7,15 @@
       padding: 10px;
     }
 }
+
+.nav {
+  background-color: #98ffbf;
+  height: 80px;
+  a {
+    color: #ff10a1;
+    font-weight: bold;
+    &:hover {
+      color: #000;
+    }
+  }
+}
